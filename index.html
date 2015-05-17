@@ -1,0 +1,50 @@
+<html style="display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;background:#ddd;">
+<head><title>Webview Wizards - an end to your WebView problems</title>
+<meta name="keywords" value="uiwebview ios webkit performance memory leaks android webview chromium scroll keyboard bug">
+</head>
+
+<body style="font-family:monospace;max-width:500px;display:inline-block;margin:10px;">
+	
+<h1>Need a Webview Wizard?</h1>
+
+<p>Are you using web technology for your apps - for instance with PhoneGap/Cordova?</p>
+
+<p>Using web technology on mobile is great, but getting great performance is very tricky. It involves complex interactions between huge and buggy libraries such as WebKit and UIKit.</p>
+
+<p>As Webview Wizards, we have spent years developing and operating widely deployed WebView-apps. We read WebKit sources for breakfast and devise clever hacks that fix your keyboard and scrolling issues for lunch. When asked how to get your WebView-app to launch within 500ms, we have some pointers. And when you've been bitten by one of the many WebKit bugs, we have surely seen them before.</p>
+
+<div style="display:-webkit-box; -webkit-box-align:center; -webkit-box-pack:center; margin:24px 0 0;">
+	
+<a href="mailto:hello@webviewwizards.com" style="text-decoration:none;color:inherit;display:-webkit-box;-webkit-box-align:center;padding:8px;width:250px;border:solid 1px #000;">
+<canvas id="call" height="30" width="30" style="width:30px;margin: 0 10px;"></canvas>
+<div style="-webkit-box-flex:1;">
+Contact a Webview Wizard
+<div style="font-size:85%;margin:2px 0 0;">Our fee is 1500&euro;/half day; we respond within 24h</div>
+</div>
+</a>
+
+</div>
+
+<script>
+var e = document.getElementById('call'), file = [5,0,-3,"butt",-4,"miter",-5,4,4,2,0.013888888888889,0.013888888888889,5,0,6,0,5,0,2,2,0,72,4,2,0.070312,-0.070312,5,0,7,0,10,2,380,1005,16,6,175,957,50,811,48,616,16,6,47,588,42,574,24,552,16,6,1,526,0,522,0,446,16,6,0,330,27,296,118,296,16,6,157,296,158,296,171,262,16,6,203,178,302,80,400,33,16,6,550,-39,782,79,853,262,16,6,866,296,867,296,906,296,16,6,997,296,1024,330,1024,446,16,6,1024,522,1023,526,1000,552,16,6,982,574,977,588,976,616,16,6,973,892,689,1077,380,1005,12,0,10,2,659,940,16,6,815,899,919,765,920,602,16,6,920,562,890,581,880,627,16,6,842,813,718,908,512,908,16,6,306,908,182,813,144,627,16,6,134,581,104,562,104,602,16,6,106,862,361,1017,659,940,12,0,10,2,471,621,16,6,485,614,524,597,558,585,16,6,592,573,626,560,634,556,16,6,650,549,652,561,640,585,16,6,630,603,630,603,695,588,16,6,828,556,849,520,820,380,16,6,761,101,498,-6,316,174,16,6,264,226,264,226,320,211,16,6,344,205,374,200,387,200,16,6,400,200,419,192,429,183,16,6,480,135,592,160,592,220,16,6,592,279,472,308,431,259,16,6,409,232,273,270,233,316,16,6,216,335,207,357,201,394,16,6,186,481,188,493,219,504,16,6,289,527,354,604,365,678,11,2,370,711,11,2,407,673,16,6,428,651,457,628,471,621,12,0,8,0,6,0,5,0,7,0,10,2,368,514,16,6,307,494,319,408,382,408,16,6,407,408,432,435,432,463,16,6,432,495,397,523,368,514,12,0,8,0,6,0,5,0,7,0,10,2,632,514,16,6,592,501,579,453,608,424,16,6,641,391,696,413,696,459,16,6,696,494,662,523,632,514,12,0,8,0,6,0,6,0,6,0];
+
+var props = "font lineWidth lineCap lineJoin miterLimit globalAlpha textBaseline measureText globalCompositeOperation".split(" "),
+	funcs = "transform translate rotate scale save restore beginPath fill stroke moveTo lineTo closePath clip quadraticCurveTo arc bezierCurveTo createLinearGradient createRadialGradient fillText strokeText fillRect clearRect".split(" ");
+
+var ctx = e.getContext('2d');
+ctx.fillStyle = ctx.strokeStyle = '#000';
+ctx.scale(e.width,e.height);
+var fileLen = file.length, fileI = 0;
+while (fileI < fileLen) {
+	cmd = file[fileI++];
+	if (cmd < 0) {
+		ctx[props[-cmd - 1]] = file[fileI++];
+	} else {
+		argCnt = file[fileI++];
+		ctx[funcs[cmd - 1]].apply(ctx, file.slice(fileI, argCnt + fileI));
+		fileI += argCnt;
+	}
+}
+</script>
+
+</body></html>
